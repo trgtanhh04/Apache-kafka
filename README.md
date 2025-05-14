@@ -39,4 +39,7 @@ KAFKA-DEMO
 ```
 ---
 ## Kiến trúc pipeline
-![Workflow](images/workflow.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Apache-kafka/main/images/workflow.png" width="100%" alt="airflow">
+</p>
+
