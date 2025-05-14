@@ -56,7 +56,7 @@ KAFKA-DEMO
     
 - **Apache Zookeeper**:
    - Zookeeper được sử dụng để quản lý metadata và điều phối hoạt động của Kafka.
-   - 
+     
 - **Apache Spark**:
    - **Spark Streaming** được sử dụng để xử lý dữ liệu thời gian thực từ Kafka.
    - Hệ thống Spark có một **Master** và nhiều **Worker**, nơi Master phân phối công việc đến các Worker để xử lý dữ liệu.
