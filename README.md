@@ -8,10 +8,10 @@
 - **Hệ thống log tập trung**: Lưu trữ và xử lý log từ nhiều nguồn khác nhau.
 
 **Thành phần chính của Kafka**:
-- 1. **Producer**: Gửi dữ liệu (messages) tới Kafka.
-- 2. **Consumer**: Đọc và xử lý dữ liệu từ Kafka.
-- 3. **Broker**: Máy chủ trung gian chịu trách nhiệm lưu trữ và gửi dữ liệu.
-- 4. **Topic**: Nơi dữ liệu được tổ chức và lưu trữ. Các Producer gửi dữ liệu vào các Topic, và các Consumer đọc dữ liệu từ các Topic.
+- **Producer**: Gửi dữ liệu (messages) tới Kafka.
+- **Consumer**: Đọc và xử lý dữ liệu từ Kafka.
+- **Broker**: Máy chủ trung gian chịu trách nhiệm lưu trữ và gửi dữ liệu.
+- **Topic**: Nơi dữ liệu được tổ chức và lưu trữ. Các Producer gửi dữ liệu vào các Topic, và các Consumer đọc dữ liệu từ các Topic.
 
 --
 ## Mục tiêu của dự án
@@ -37,3 +37,6 @@ KAFKA-DEMO
 ├── README.md                 # Tài liệu mô tả dự án
 ├── requirements.txt          # Danh sách thư viện Python cần cài đặt
 ```
+---
+## Kiến trúc pipeline
+![Workflow](images/workflow.png)
