@@ -45,23 +45,23 @@ KAFKA-DEMO
   <img src="https://raw.githubusercontent.com/trgtanhh04/Apache-kafka/main/images/workflow.jpg" width="100%" alt="airflow">
 </p>
 
-### **Giải thích Workflow**
-**Web API (Nguồn dữ liệu)**:
+#### **Giải thích Workflow**
+- **Web API (Nguồn dữ liệu)**:
    - Dữ liệu được lấy từ API công khai [Random User API](https://randomuser.me/api/). 
    - API này cung cấp thông tin ngẫu nhiên về người dùng như tên, địa chỉ, email, ngày sinh, v.v.
 
-**Apache Kafka**:
+- **Apache Kafka**:
    - Dữ liệu từ API được gửi đến **Kafka** thông qua **Producer**.
    - Kafka lưu trữ dữ liệu trong các **Topic**, cho phép các hệ thống hạ nguồn (downstream) xử lý dữ liệu.
-   - 
-**Apache Zookeeper**:
+    
+- **Apache Zookeeper**:
    - Zookeeper được sử dụng để quản lý metadata và điều phối hoạt động của Kafka.
    - 
-**Apache Spark**:
+- **Apache Spark**:
    - **Spark Streaming** được sử dụng để xử lý dữ liệu thời gian thực từ Kafka.
    - Hệ thống Spark có một **Master** và nhiều **Worker**, nơi Master phân phối công việc đến các Worker để xử lý dữ liệu.
 
-**PostgreSQL**:
+- **PostgreSQL**:
    - Sau khi dữ liệu được xử lý bởi Spark, nó được lưu trữ vào cơ sở dữ liệu **PostgreSQL** để dễ dàng truy vấn và phân tích.
 
 ---
