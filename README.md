@@ -66,57 +66,102 @@ KAFKA-DEMO
 
 ---
 ## Cài đặt dự án
-### **1. Clone the Repository**
-First, clone the repository to your local machine:
+
+### **1. Clone Repository**
+Đầu tiên, clone repository về máy của bạn:
 ```bash
-git clone https://github.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering.git
-cd Mobile-AWS-Pipeline-Engineering
+git clone https://github.com/trgtanhh04/Kafka-Demo.git
+cd Kafka-Demo
 ```
 
 ---
 
-### **2. Install Docker**
-- **Download Docker Desktop**:
-  - Go to the [Docker Desktop website](https://www.docker.com/products/docker-desktop/) and download the version suitable for your operating system.
-  - Follow the instructions on the website to install Docker Desktop.
-- **Verify Docker Installation**:
-  - Run the following command to ensure Docker is installed and running:
+### **2. Cài đặt Docker**
+Docker sẽ được sử dụng để khởi chạy các dịch vụ như Kafka, Zookeeper, PostgreSQL và Spark.
+
+- **Tải Docker Desktop**:
+  - Truy cập [Docker Desktop](https://www.docker.com/products/docker-desktop/) và tải phiên bản phù hợp với hệ điều hành của bạn.
+  - Thực hiện cài đặt theo hướng dẫn trên website.
+
+- **Kiểm tra Docker đã cài đặt**:
+  - Chạy lệnh sau để đảm bảo Docker đã được cài đặt và đang hoạt động:
     ```bash
     docker --version
     ```
 
 ---
 
-### **3. Build the Docker Environment**
-Use the `Dockerfile` and `docker-compose.yml` to set up the environment:
-1. Build the Docker image:
-   ```bash
-   docker build -t mobile-aws-pipeline .
-   ```
-2. Start the services using Docker Compose:
+### **3. Khởi chạy môi trường Docker**
+Sử dụng file `docker-compose.yml` để thiết lập môi trường:
+1. Khởi động các dịch vụ:
    ```bash
    docker-compose up -d
    ```
-   This will start all necessary containers, such as Apache Airflow, Kafka, and any other services defined in the `docker-compose.yml`.
+   Lệnh này sẽ khởi chạy các container cần thiết, bao gồm Kafka, Zookeeper, Spark và PostgreSQL.
+
+2. Kiểm tra các container đang chạy:
+   ```bash
+   docker ps
+   ```
+
+3. Nếu cần dừng các dịch vụ:
+   ```bash
+   docker-compose down
+   ```
 
 ---
 
-### **4. Prerequisites**
-Ensure you have the following prerequisites installed locally:
-- **Java 11**:
-  - Required for running Spark and other Java-based tools.
-  - Verify installation:
-    ```bash
-    java -version
-    ```
-  - If not installed, download and install from [AdoptOpenJDK](https://adoptopenjdk.net/).
-- **Python 3.8 or higher**:
-  - Required for running the Python scripts and notebooks.
-  - Verify installation:
+### **4. Cài đặt các công cụ cần thiết**
+Đảm bảo các công cụ sau đã được cài đặt trên máy cục bộ của bạn:
+
+- **Python 3.8 hoặc cao hơn**:
+  - Yêu cầu để chạy các script Python.
+  - Kiểm tra phiên bản Python:
     ```bash
     python --version
     ```
-  - Install necessary Python dependencies:
+  - Cài đặt các thư viện Python cần thiết:
     ```bash
     pip install -r requirements.txt
     ```
+
+- **Java 11**:
+  - Yêu cầu để chạy Apache Spark.
+  - Kiểm tra phiên bản Java:
+    ```bash
+    java -version
+    ```
+  - Nếu chưa cài đặt, bạn có thể tải và cài đặt từ [AdoptOpenJDK](https://adoptopenjdk.net/).
+
+---
+
+### **5. Lấy dữ liệu từ API**
+- Dữ liệu người dùng sẽ được lấy từ API công khai [Random User API](https://randomuser.me/api/), sau đó đẩy vào Kafka thông qua **Producer**.
+- Bạn có thể kiểm tra API bằng cách mở trình duyệt hoặc sử dụng lệnh:
+  ```bash
+  curl https://randomuser.me/api/
+  ```
+
+---
+
+### **6. Chạy ứng dụng**
+- **Producer**:
+  Gửi dữ liệu từ API vào Kafka:
+  ```bash
+  python src/producer.py
+  ```
+- **Consumer**:
+  Đọc dữ liệu từ Kafka, xử lý bằng Spark và lưu vào PostgreSQL:
+  ```bash
+  python src/consumer.py
+  ```
+
+---
+
+### **7. Kiểm tra kết quả**
+- File CSV đầu ra sẽ được lưu trong thư mục `output_data`.
+- Dữ liệu đã xử lý được lưu trữ trong cơ sở dữ liệu **PostgreSQL**. Bạn có thể kết nối đến PostgreSQL để kiểm tra:
+  ```bash
+  docker exec -it <container_id_postgres> psql -U postgres -d userdb
+  ```
+```bash
