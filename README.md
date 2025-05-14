@@ -70,11 +70,10 @@ KAFKA-DEMO
 ### **1. Clone Repository**
 Đầu tiên, clone repository về máy của bạn:
 ```bash
-git clone https://github.com/trgtanhh04/Kafka-Demo.git
-cd Kafka-Demo
+git clone https://github.com/trgtanhh04/Apache-kafka.git
+cd Apache-kafka
 ```
 
----
 
 ### **2. Cài đặt Docker**
 Docker sẽ được sử dụng để khởi chạy các dịch vụ như Kafka, Zookeeper, PostgreSQL và Spark.
@@ -89,7 +88,6 @@ Docker sẽ được sử dụng để khởi chạy các dịch vụ như Kafka
     docker --version
     ```
 
----
 
 ### **3. Khởi chạy môi trường Docker**
 Sử dụng file `docker-compose.yml` để thiết lập môi trường:
@@ -109,7 +107,6 @@ Sử dụng file `docker-compose.yml` để thiết lập môi trường:
    docker-compose down
    ```
 
----
 
 ### **4. Cài đặt các công cụ cần thiết**
 Đảm bảo các công cụ sau đã được cài đặt trên máy cục bộ của bạn:
@@ -133,7 +130,6 @@ Sử dụng file `docker-compose.yml` để thiết lập môi trường:
     ```
   - Nếu chưa cài đặt, bạn có thể tải và cài đặt từ [AdoptOpenJDK](https://adoptopenjdk.net/).
 
----
 
 ### **5. Lấy dữ liệu từ API**
 - Dữ liệu người dùng sẽ được lấy từ API công khai [Random User API](https://randomuser.me/api/), sau đó đẩy vào Kafka thông qua **Producer**.
@@ -142,7 +138,6 @@ Sử dụng file `docker-compose.yml` để thiết lập môi trường:
   curl https://randomuser.me/api/
   ```
 
----
 
 ### **6. Chạy ứng dụng**
 - **Producer**:
@@ -156,7 +151,7 @@ Sử dụng file `docker-compose.yml` để thiết lập môi trường:
   python src/consumer.py
   ```
 
----
+
 
 ### **7. Kiểm tra kết quả**
 - File CSV đầu ra sẽ được lưu trong thư mục `output_data`.
@@ -164,4 +159,3 @@ Sử dụng file `docker-compose.yml` để thiết lập môi trường:
   ```bash
   docker exec -it <container_id_postgres> psql -U postgres -d userdb
   ```
-```bash
