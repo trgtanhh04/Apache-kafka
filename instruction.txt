@@ -1,0 +1,10 @@
+# Kiểm tra dữ liệu trong postgret
+psql -h localhost -U postgres -d userdb
+password: postgres
+
+
+# Kiểm tra danh sách topic trong kafka
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --list
+
+# Kiểm tra nội dung topic trong kafka
+docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic users_created --from-beginning
